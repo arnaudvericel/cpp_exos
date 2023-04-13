@@ -2,7 +2,7 @@
 
 /*
 2 Things were wrong with the original code :
-- the Object destructor was not virtual, so the line "delete pA" was not calling ~Thing(), thus the instance was not removed from the thingCollection after its destruction.
+- the Object destructor was not virtual, so the line "delete pA" was not calling ~Thing() (only ~Object()), thus the instance was not removed from the thingCollection after its destruction.
 - pB was created with a static cast while going down the inheritance tree, which is unsafe (although it works in this case).
     * It's better practice to use dynamic_cast when performing an up cast (base class to child class) because the pA pointer might not have pointed to a Thing object.
     * After a dynamic cast to pointer, which can fail and return nullptr, it's also good practice to test before dereferencing and calling the Print() function.
