@@ -12,3 +12,11 @@ struct Vec3
     //Vec3 operator*(float scale) const; # Not needed
     float GetLength() const;
 };
+
+struct SceneSetup
+{
+    Vec3 EnemyPos, PlayerPos, EnemySightDir;
+    float EnemyFovDegree;
+    bool EnemyShouldSeePlayer;
+    SceneSetup(Vec3 EnemyPos, Vec3 PlayerPos, Vec3 EnemySightDir, float EnemyFovDegree, bool EnemyShouldSeePlayer) : EnemyPos(EnemyPos), PlayerPos(PlayerPos), EnemySightDir(EnemySightDir), EnemyFovDegree(EnemyFovDegree), EnemyShouldSeePlayer(EnemyShouldSeePlayer) {}
+};
