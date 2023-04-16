@@ -32,8 +32,12 @@ bool EnemyCanSeePlayer(const SceneSetup& Setup)
 Scenarios GetScenarios()
 {
     Scenarios scenarios;
+    // SceneSetup(EnemyPos, PlayerPos, EnemySightDir, EnemyFovDegree, EnemyShouldSeePlayer)
     scenarios.push_back(SceneSetup(Vec3(0., 0., 0.), Vec3(3., 0., 0.), Vec3(1., 1., 0.), 90., true));
     scenarios.push_back(SceneSetup(Vec3(0., 0., 0.), Vec3(3., 0., 0.), Vec3(1., 1., 0.), 60., false));
+    scenarios.push_back(SceneSetup(Vec3(0., 0., 0.), Vec3(-3., 0., 0.), Vec3(1., 1., 0.), 180., false));
+    scenarios.push_back(SceneSetup(Vec3(0., 0., 0.), Vec3(-3., 0., 0.), Vec3(0., 1., 0.), 180., true));
+    scenarios.push_back(SceneSetup(Vec3(0., 0., 0.), Vec3(-3., 0., 0.), Vec3(-1., 1., 0.), 180., true));
     return scenarios;
 }
 

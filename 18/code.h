@@ -8,8 +8,10 @@ struct Vec3
 
     float DotProduct(const Vec3& rOther) const;
     Vec3 operator-(const Vec3& rOther) const;
+    //Vec3 CrossProduct(const Vec3& rOther) const; # Not needed
     //Vec3 operator+(const Vec3& rOther) const; # Not needed
     //Vec3 operator*(float scale) const; # Not needed
+    //Vec3 GetNormalized() const; # Not needed
     float GetLength() const;
 };
 
