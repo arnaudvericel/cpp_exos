@@ -1,11 +1,11 @@
 #include <iostream>
 
 /*
-The code was inefficient because we had to go through the linked list twice : one for the instantiation and once for the coordinates transformation.
+The code was inefficient because we had to go through the linked list twice : once for the instantiation and once for the coordinates transformation.
 We can merge the Init() and Transform() methods into one by overloading the Foo constructor :
 - Foo(Foo* _nextItem, const Matrix& transform) randomizes the coordinates and then performs the transformation.
 - Foo(Foo* _nextItem) only randomizes the coordinates.
-This gives us an option to turn on the matrix transformation or not, without the need to loop through the linked list several times.
+This gives us a wiggle room to turn on the matrix transformation or not, without the need to loop through the linked list several times.
 
 The corrected code is below:
 */
