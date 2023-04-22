@@ -4,7 +4,7 @@
 struct Vec3
 {
     float X, Y, Z;
-    Vec3(float X, float Y, float Z) : X(X), Y(Y), Z(Z) {};
+    Vec3(float _X, float _Y, float _Z) : X(_X), Y(_Y), Z(_Z) {};
 
     float DotProduct(const Vec3& rOther) const;
     Vec3 operator-(const Vec3& rOther) const;
