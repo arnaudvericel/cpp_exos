@@ -1,18 +1,21 @@
 #include <iostream>
 
+/* Requires std=c++11 */
+
 /*
 The code was inefficient because we had to go through the linked list twice : once for the instantiation and once for the coordinates transformation.
 We can merge the Init() and Transform() methods into one by overloading the Foo constructor :
-- Foo(Foo* _nextItem, const Matrix& transform) randomizes the coordinates and then performs the transformation.
-- Foo(Foo* _nextItem) only randomizes the coordinates.
+- Foo(Foo* _nextItem) only randomizes the coordinates (and other elements).
+- Foo(Foo* _nextItem, const Matrix& transform) call the base constructor and then performs the matrix transformation.
 This gives us a wiggle room to turn on the matrix transformation or not, without the need to loop through the linked list several times.
 
-The corrected code is below:
+The proposed corrected code is below:
 */
 
 void RandomizeCoords(float* coords)
 {
     std::cout << "Randomizing coords" << std::endl;
+    // do some things...
 }
 
 struct Matrix
@@ -24,25 +27,21 @@ struct Foo
 {
     Foo(Foo* _nextItem);
     Foo(Foo* _nextItem, const Matrix& transform);
-    void InitializeSomeThings(Foo* _nextItem);
     Foo* nextItem;
     float coords[3];
+    // and potentially others...
 };
-
-void Foo::InitializeSomeThings(Foo* _nextItem)
-{
-    nextItem = _nextItem;
-    RandomizeCoords(coords);
-}
 
 Foo::Foo(Foo* _nextItem)
 {
-    InitializeSomeThings(_nextItem);
+    nextItem = _nextItem;
+    RandomizeCoords(coords);
+    // and more...
 }
 
-Foo::Foo(Foo* _nextItem, const Matrix& transform)
+// c++11 feature : delegating the base constructor to any overloads
+Foo::Foo(Foo* _nextItem, const Matrix& transform): Foo(_nextItem)
 {
-    InitializeSomeThings(_nextItem);
     transform.ApplyTo(coords);
 }
 
