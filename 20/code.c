@@ -8,9 +8,7 @@ The function assumes that outStr has enough memory allocated.
 */
 void ReverseString(const char* inStr, char* outStr)
 {
-    strcpy(outStr, inStr);
     size_t lenStr = strlen(inStr);
-
     for (size_t i = 0; i < lenStr; i++)
     {
         outStr[lenStr - i - 1] = inStr[i];
