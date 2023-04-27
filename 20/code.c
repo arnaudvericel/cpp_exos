@@ -13,9 +13,6 @@ void ReverseString(const char* inStr, char* outStr)
     {
         outStr[lenStr - i - 1] = inStr[i];
     }
-
-    printf("Input: %s\n", inStr);
-    printf("Reversed: %s\n", outStr);
 }
 
 int main()
@@ -24,7 +21,17 @@ int main()
     size_t lenStr = strlen(inStr);
     char* outStr = (char*)malloc((lenStr + 1) * sizeof(char)); // +1 for '\0'
 
+    if (outStr == NULL)
+    {
+        printf("Error while allocating memory for outStr\n");
+        return -1;
+    }
+    outStr[lenStr] = '\0';
+
     ReverseString(inStr, outStr);
+
+    printf("Input: %s\n", inStr);
+    printf("Reversed: %s\n", outStr);
 
     free(outStr);
     return 0;
